@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { SearchInput, Button } from './SearchForm.styled';
 
 const SearchForm = ({ searchMovies }) => {
   const [value, setValue] = useState('');
@@ -15,14 +16,14 @@ const SearchForm = ({ searchMovies }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
+      <SearchInput
         type="text"
         name="value"
         autoFocus
         value={value}
         onChange={handleChange}
       />
-      <button type="submit">Search</button>
+      <Button type="submit">Search</Button>
     </form>
   );
 };
