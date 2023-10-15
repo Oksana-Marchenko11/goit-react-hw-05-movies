@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getReviews } from 'api';
 import { Loader } from 'components/Loader/Loader';
-// import { List } from './Reviews.styled';
 
 export const Reviews = () => {
   const { movieId } = useParams();

@@ -2,14 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { getMovieDetails } from 'api';
 import { Loader } from 'components/Loader/Loader';
-import { Button } from './MovieDetails.styled';
-// import {
-//   //   Container,
-//   List,
-//   //   ListInfo,
-//   LinkInfo,
-//   //   Button,
-// } from './MovieDetails.styled';
+import { Button, Container, LinkInfo } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -54,7 +47,7 @@ const MovieDetails = () => {
       {loading && <Loader />}
 
       {moviesDetail && (
-        <div>
+        <Container>
           <img
             width="300px"
             src={
@@ -78,17 +71,17 @@ const MovieDetails = () => {
               ))}
             </ul>
           </div>
-        </div>
+        </Container>
       )}
       <hr />
       <div>
         <h3>Additional information</h3>
         <ul>
           <li>
-            <Link to="cast">Cast</Link>
+            <LinkInfo to="cast">Cast</LinkInfo>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <LinkInfo to="reviews">Reviews</LinkInfo>
           </li>
         </ul>
         <hr />
