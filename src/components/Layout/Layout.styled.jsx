@@ -5,8 +5,6 @@ export const Container = styled.div`
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
 `;
 
 export const Header = styled.header`
@@ -18,8 +16,7 @@ export const Header = styled.header`
 export const Link = styled(NavLink)`
   display: inline-block;
   text-decoration: none;
-  padding: 14px;
-  margin-left: 10px;
+  padding: 15px;
   font-weight: 600;
   font-size: 28px;
   color: black;

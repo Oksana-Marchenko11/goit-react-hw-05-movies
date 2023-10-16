@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getCredits } from 'api';
 import { Loader } from 'components/Loader/Loader';
-// import { List, Text } from './Cast.styled';
 
 export const Cast = () => {
   const { movieId } = useParams();
@@ -27,7 +26,6 @@ export const Cast = () => {
   return (
     <div>
       {loading && <Loader />}
-
       <ul>
         {actors.map(({ id, profile_path, original_name, name, character }) => (
           <li key={id}>
