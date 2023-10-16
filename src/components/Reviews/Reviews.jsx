@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { getReviews } from 'api';
 import { Loader } from 'components/Loader/Loader';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -44,3 +44,4 @@ export const Reviews = () => {
     </>
   );
 };
+export default Reviews;

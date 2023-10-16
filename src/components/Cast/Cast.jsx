@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { getCredits } from 'api';
 import { Loader } from 'components/Loader/Loader';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [actors, setActors] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -46,3 +46,4 @@ export const Cast = () => {
     </div>
   );
 };
+export default Cast;
