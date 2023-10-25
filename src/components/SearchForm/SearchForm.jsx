@@ -1,17 +1,31 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { SearchInput, Button } from './SearchForm.styled';
+import { useSearchParams } from 'react-router-dom';
 
 const SearchForm = ({ searchMovies }) => {
   const [value, setValue] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('search') ?? '';
+
+  useEffect(() => {
+    if (query === '' || query === value) return;
+    setValue(query);
+    searchMovies(query.toLowerCase());
+  }, [query, value, searchMovies]);
 
   const handleChange = e => {
-    setValue(e.target.value);
+    const filmName = e.target.value;
+    if (filmName === '') {
+      return setSearchParams({});
+    }
+    setSearchParams({ search: filmName });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    searchMovies(value.toLowerCase());
+    const data = searchParams.get('search');
+    searchMovies(data.toLowerCase());
   };
 
   return (
@@ -20,7 +34,7 @@ const SearchForm = ({ searchMovies }) => {
         type="text"
         name="value"
         autoFocus
-        value={value}
+        value={query}
         onChange={handleChange}
       />
       <Button type="submit">Search</Button>

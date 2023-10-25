@@ -12,7 +12,6 @@ const Movies = () => {
 
   const searchMovies = MovieValue => {
     setLoading(true);
-
     getSearchByKeyword(MovieValue)
       .then(searchResults => {
         setSearchFilms(searchResults);

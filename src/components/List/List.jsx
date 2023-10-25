@@ -3,7 +3,6 @@ import { LinkMovies, MovieItem } from './List.styled';
 
 export const List = ({ films }) => {
   const location = useLocation();
-
   return (
     <dl>
       {films.map(film => (
