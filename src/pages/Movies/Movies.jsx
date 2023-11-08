@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 import { List } from 'components/List/List';
 import SearchForm from 'components/SearchForm/SearchForm';
@@ -9,10 +10,13 @@ const Movies = () => {
   const [searchFilms, setSearchFilms] = useState([]);
   const [loading, setLoading] = useState(false);
   const [listEmpty, setListEmpty] = useState(false);
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('search') ?? '';
 
-  const searchMovies = MovieValue => {
+  useEffect(() => {
+    if (query === '') return;
     setLoading(true);
-    getSearchByKeyword(MovieValue)
+    getSearchByKeyword(query)
       .then(searchResults => {
         setSearchFilms(searchResults);
         searchResults.length === 0 && setListEmpty(true);
@@ -23,11 +27,11 @@ const Movies = () => {
       .finally(() => {
         setLoading(false);
       });
-  };
+  }, [query]);
 
   return (
     <main>
-      <SearchForm searchMovies={searchMovies} />
+      <SearchForm />
       {loading && <Loader />}
       {searchFilms && <List films={searchFilms} />}
       {listEmpty && (
