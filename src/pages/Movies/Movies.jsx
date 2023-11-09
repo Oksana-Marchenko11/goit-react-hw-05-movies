@@ -10,28 +10,34 @@ const Movies = () => {
   const [searchFilms, setSearchFilms] = useState([]);
   const [loading, setLoading] = useState(false);
   const [listEmpty, setListEmpty] = useState(false);
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get('search') ?? '';
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const filmParam = value => {
+    setSearchParams({ search: value });
+  };
+
+  const query = searchParams.get('search');
 
   useEffect(() => {
-    if (query === '') return;
-    setLoading(true);
-    getSearchByKeyword(query)
-      .then(searchResults => {
-        setSearchFilms(searchResults);
-        searchResults.length === 0 && setListEmpty(true);
-      })
-      .catch(error => {
-        console.log(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    if (query !== null) {
+      setLoading(true);
+      getSearchByKeyword(query)
+        .then(searchResults => {
+          setSearchFilms(searchResults);
+          searchResults.length === 0 && setListEmpty(true);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
   }, [query]);
 
   return (
     <main>
-      <SearchForm />
+      <SearchForm func={filmParam} />
       {loading && <Loader />}
       {searchFilms && <List films={searchFilms} />}
       {listEmpty && (

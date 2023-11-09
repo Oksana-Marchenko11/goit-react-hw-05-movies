@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { SearchInput, Button } from './SearchForm.styled';
-import { useSearchParams } from 'react-router-dom';
 
-const SearchForm = () => {
+const SearchForm = ({ func }) => {
   const [value, setValue] = useState('');
-  const [setSearchParams] = useSearchParams();
 
   const handleChange = e => {
     const filmName = e.target.value;
@@ -13,7 +11,7 @@ const SearchForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setSearchParams({ search: value });
+    func(value);
   };
 
   return (

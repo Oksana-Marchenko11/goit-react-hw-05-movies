@@ -12,7 +12,6 @@ const Home = () => {
 
     getTrending()
       .then(trendingFilms => {
-        console.log(trendingFilms);
         setFilms(trendingFilms);
       })
       .catch(error => {
