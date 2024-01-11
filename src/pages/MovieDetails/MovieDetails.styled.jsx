@@ -22,6 +22,10 @@ export const Container = styled.div`
   gap: 24px;
 `;
 
+export const DetailList = styled.ul`
+  list-style: none;
+`;
+
 export const LinkInfo = styled(Link)`
   color: darkblue;
   font-size: 20px;

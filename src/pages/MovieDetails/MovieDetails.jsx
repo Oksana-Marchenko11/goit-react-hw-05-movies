@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { getMovieDetails } from 'api';
 import { Loader } from 'components/Loader/Loader';
-import { Button, Container, LinkInfo } from './MovieDetails.styled';
+import { Button, Container, LinkInfo, DetailList } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -76,7 +76,7 @@ const MovieDetails = () => {
       <hr />
       <div>
         <h3>Additional information</h3>
-        <ul>
+        <DetailList>
           <li>
             <LinkInfo to="cast" state={{ from: location.state.from }}>
               Cast
@@ -87,7 +87,7 @@ const MovieDetails = () => {
               Reviews
             </LinkInfo>
           </li>
-        </ul>
+        </DetailList>
         <hr />
         <Outlet />
       </div>
